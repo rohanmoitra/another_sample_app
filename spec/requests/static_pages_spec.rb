@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "StaticPages" do
+describe "Static Pages" do
 
   describe "Home page" do
     before {visit root_path}
@@ -54,5 +54,15 @@ describe "StaticPages" do
     end
 
   end
-  
+
+  it "should have right links on the layout" do
+    visit root_path
+    click_link "About"
+    page.should have_selector('h1',text: "About Us")
+    click_link "Contact"
+    page.should have_selector('h1',text: "Contact")
+    click_link "Help"
+    page.should have_selector('h1',text: "Help")
+  end
+
 end
